@@ -94,17 +94,30 @@ static void lubksb(const double *A, int n, const int *indx, double *b)
 	}
 }
 /* inverse of matrix ---------------------------------------------------------*/
-extern int matinv(double *A, int n)
+extern int matinv(double *A, int n,double *C)//A为输入矩阵，C为输出矩阵
 {
-	double d, *B;
+	
+	double d, *B,*D;
 	int i, j, *indx;
 
-	indx = imat(n, 1); B = mat(n, n); matcpy(B, A, n, n);
+	indx = imat(n, 1); B = mat(n, n); matcpy(B, A, n, n);D = mat(n, n);
+
+	for (int i = 0;i < n;++i)
+		for (int j = 0;j < n;++j) {
+			D[i*n + j] = A[i*n + j];
+		}
+
 	if (ludcmp(B, n, indx, &d)) { free(indx); free(B); return -1; }
 	for (j = 0;j<n;j++) {
 		for (i = 0;i<n;i++) A[i + j*n] = 0.0; A[j + j*n] = 1.0;
 		lubksb(B, n, indx, A + j*n);
 	}
-	free(indx); free(B);
+	for (int i = 0;i < n;i++)
+		for (int j = 0;j < n;++j) {
+			C[i*n + j] = A[i*n + j];
+			A[i*n + j] = D[i*n + j];
+		}
+	
+	free(indx); free(B);free(D);
 	return 0;
 }
