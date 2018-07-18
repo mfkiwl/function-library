@@ -34,7 +34,7 @@ int kmat(double *A,const int n,const int m,double k) {//A(nxm),常数k
 }
 
 //矩阵加减
-void matps(double *A, const int n,const int m, double *B, double *C,const char a[2]) {//C=A+B or C=A-B
+int matps(double *A, const int n,const int m, double *B, double *C,const char a[2]) {//C=A+B or C=A-B
 	if (a == "+") {
 		for (int i = 0;i < n;++i)
 			for (int j = 0;j < m;++j)
@@ -46,6 +46,6 @@ void matps(double *A, const int n,const int m, double *B, double *C,const char a
 			for (int j = 0;j < m;++j)
 				C[i*m + j] = A[i*m + j] - B[i*m + j];
 	}
-
+	return 0;
 
 }
