@@ -30,7 +30,7 @@ extern double *mat(int n, int m)
 	}
 	return p;
 }
-/* copy matrix /复制矩阵-----------------------------------------------------------------
+/* copy matrix /复制矩阵----------------------------------------------------------------
 * copy matrix
 * args   : double *A        O   destination matrix A (n x m)
 *          double *B        I   source matrix B (n x m)
