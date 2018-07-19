@@ -1,5 +1,7 @@
 int CholeskyUppertri(double *D, int n, double *L) {//D为输出矩阵，n为矩阵的维度，L是输出的上三角矩阵
 	double suml;int K = 0;
+	for (int i = 0;i < n*n;++i)
+		L[i] = 0;
 	L[0] = sqrt(D[0]);
 	for (int i = 0;i < n;++i) L[i * n] = D[i * n] / L[0];
 	for (K = 1;K < n;K++) {
