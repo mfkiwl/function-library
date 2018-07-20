@@ -8,7 +8,6 @@ int CholeskyUppertri(double *D, int n, double *L) {//D为输出矩阵，n为矩�
 		Lkk(D, n, L, &K);
 		Lik(D, n, L, &K);
 	}
-	matTran(L, n);//转置
 	return 0;
 
 }
